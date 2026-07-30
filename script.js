@@ -19,6 +19,7 @@ function addToCart(name, price) {
     let item = cart.find(product => product.name === name);
 
 
+
     if (item) {
 
         item.qty++;
@@ -36,6 +37,7 @@ function addToCart(name, price) {
         });
 
     }
+
 
 
     updateCart();
@@ -57,7 +59,13 @@ function updateCart() {
     let totalPrice = document.getElementById("total-price");
 
 
+
+    if(!cartItems) return;
+
+
+
     cartItems.innerHTML = "";
+
 
 
     let total = 0;
@@ -66,7 +74,8 @@ function updateCart() {
 
 
 
-    cart.forEach((item, index) => {
+
+    cart.forEach((item,index)=>{
 
 
         let itemTotal = item.price * item.qty;
@@ -80,41 +89,33 @@ function updateCart() {
 
         cartItems.innerHTML += `
 
-
         <div class="cart-item">
 
+        <h4>${item.name}</h4>
 
-            <h4>${item.name}</h4>
+        <p>
 
+        ${item.price} جنيه × ${item.qty}
 
-            <p>
-            السعر: ${item.price} جنيه
-            </p>
-
-
-            <div class="quantity">
+        </p>
 
 
-                <button onclick="increaseQty(${index})">
-                +
-                </button>
+        <button onclick="increaseQty(${index})">
+        +
+        </button>
 
 
-                <span>
-                ${item.qty}
-                </span>
+        <span>
+        ${item.qty}
+        </span>
 
 
-                <button onclick="decreaseQty(${index})">
-                -
-                </button>
-
-
-            </div>
+        <button onclick="decreaseQty(${index})">
+        -
+        </button>
 
 
         </div>
-
 
         `;
 
@@ -128,7 +129,10 @@ function updateCart() {
     totalPrice.innerHTML = total;
 
 
+
 }
+
+
 
 
 
@@ -136,7 +140,7 @@ function updateCart() {
 
 // زيادة الكمية
 
-function increaseQty(index) {
+function increaseQty(index){
 
     cart[index].qty++;
 
@@ -148,24 +152,24 @@ function increaseQty(index) {
 
 
 
+
 // تقليل الكمية
 
-function decreaseQty(index) {
+function decreaseQty(index){
 
 
-    if(cart[index].qty > 1) {
-
+    if(cart[index].qty > 1){
 
         cart[index].qty--;
 
+    }
 
-    } else {
-
+    else{
 
         cart.splice(index,1);
 
-
     }
+
 
 
     updateCart();
@@ -178,10 +182,10 @@ function decreaseQty(index) {
 
 
 
-// إرسال الطلب عبر واتساب
+// الانتقال إلى صفحة الدفع
 
 
-document.getElementById("checkoutBtn").addEventListener("click", function(){
+function goCheckout(){
 
 
 
@@ -199,90 +203,45 @@ document.getElementById("checkoutBtn").addEventListener("click", function(){
 
 
 
-    let payment = document.querySelector(
-        'input[name="payment"]:checked'
-    ).value;
+    localStorage.setItem(
 
+        "cart",
 
-
-
-    let message = 
-    "طلب جديد من سمك وبروتين%0A%0A";
-
-
-
-    let total = 0;
-
-
-
-    cart.forEach(item => {
-
-
-
-        let itemTotal = item.price * item.qty;
-
-
-        total += itemTotal;
-
-
-
-        message += 
-        `${item.name} × ${item.qty} = ${itemTotal} جنيه%0A`;
-
-
-
-    });
-
-
-
-
-    message += 
-    `%0Aالإجمالي: ${total} جنيه`;
-
-
-
-    message +=
-    `%0Aطريقة الدفع: ${payment}`;
-
-
-
-
-    if(payment === "فودافون كاش"){
-
-
-        message +=
-        "%0Aيرجى إرسال صورة التحويل بعد الدفع.";
-
-
-    }
-
-
-
-    if(payment === "إنستا باي"){
-
-
-        message +=
-        "%0Aيرجى إرسال تأكيد التحويل بعد الدفع.";
-
-
-    }
-
-
-
-
-
-    let phone = "201159866529";
-
-
-
-    window.open(
-
-        `https://wa.me/${phone}?text=${message}`,
-
-        "_blank"
+        JSON.stringify(cart)
 
     );
 
 
 
-});
+
+    window.location.href = "checkout.html";
+
+
+
+}
+
+
+
+
+
+
+// زر إتمام الشراء إذا وجد في الصفحة
+
+
+let checkoutButton = document.getElementById("goCheckout");
+
+
+
+if(checkoutButton){
+
+
+    checkoutButton.addEventListener(
+
+        "click",
+
+        goCheckout
+
+    );
+
+
+}
