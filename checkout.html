@@ -1,1 +1,400 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>إتمام الطلب - سمك وبروتين</title>
+
+
+<link rel="stylesheet" href="style.css">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+</head>
+
+
+<body>
+
+
+
+<header>
+
+<div class="logo">
+
+<i class="fa-solid fa-fish"></i>
+
+<span>
+سمك وبروتين
+</span>
+
+</div>
+
+</header>
+
+
+
+
+
+
+<section class="checkout">
+
+
+<h1>
+
+<i class="fa-solid fa-credit-card"></i>
+
+إتمام الطلب
+
+</h1>
+
+
+
+
+
+<div class="checkout-box">
+
+
+
+<h2>
+المنتجات
+</h2>
+
+
+<div id="checkout-items">
+
+</div>
+
+
+
+
+
+<h3>
+
+الإجمالي:
+
+<span id="checkout-total">
+0
+</span>
+
+جنيه
+
+</h3>
+
+
+
+
+
+<h2>
+
+بيانات العميل
+
+</h2>
+
+
+
+
+<input 
+type="text"
+id="customer-name"
+placeholder="الاسم">
+
+
+
+<input 
+type="tel"
+id="customer-phone"
+placeholder="رقم الهاتف">
+
+
+
+<textarea 
+id="customer-address"
+placeholder="العنوان">
+
+</textarea>
+
+
+
+
+
+
+
+<h2>
+
+طريقة الدفع
+
+</h2>
+
+
+
+
+<label class="payment-option">
+
+
+<input 
+type="radio"
+name="payment"
+value="الدفع عند الاستلام"
+checked>
+
+
+<i class="fa-solid fa-truck"></i>
+
+الدفع عند الاستلام
+
+
+</label>
+
+
+
+
+
+<label class="payment-option">
+
+
+<input 
+type="radio"
+name="payment"
+value="فودافون كاش">
+
+
+<i class="fa-solid fa-mobile-screen-button"></i>
+
+فودافون كاش
+
+
+</label>
+
+
+
+
+
+
+<label class="payment-option">
+
+
+<input 
+type="radio"
+name="payment"
+value="إنستا باي">
+
+
+<i class="fa-solid fa-building-columns"></i>
+
+إنستا باي
+
+
+</label>
+
+
+
+
+
+
+
+<button onclick="sendOrder()"
+class="whatsapp-btn">
+
+
+<i class="fab fa-whatsapp"></i>
+
+تأكيد الطلب عبر واتساب
+
+
+</button>
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<script>
+
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+
+let itemsBox = document.getElementById("checkout-items");
+
+let totalBox = document.getElementById("checkout-total");
+
+
+
+let total = 0;
+
+
+
+cart.forEach(item => {
+
+
+let price = item.price * item.qty;
+
+
+total += price;
+
+
+
+itemsBox.innerHTML += `
+
+<p>
+
+${item.name}
+
+×
+
+${item.qty}
+
+=
+
+${price}
+
+جنيه
+
+</p>
+
+`;
+
+
+});
+
+
+
+totalBox.innerHTML = total;
+
+
+
+
+
+
+
+
+function sendOrder(){
+
+
+
+let name = document.getElementById("customer-name").value;
+
+
+let phone = document.getElementById("customer-phone").value;
+
+
+let address = document.getElementById("customer-address").value;
+
+
+
+let payment = document.querySelector(
+'input[name="payment"]:checked'
+).value;
+
+
+
+
+let message =
+
+"طلب جديد من سمك وبروتين%0A%0A";
+
+
+
+cart.forEach(item=>{
+
+
+message +=
+
+`${item.name} × ${item.qty} = ${item.price * item.qty} جنيه%0A`;
+
+
+
+});
+
+
+
+message +=
+
+`%0Aالإجمالي: ${total} جنيه`;
+
+
+
+message +=
+
+`%0A%0Aاسم العميل: ${name}`;
+
+message +=
+
+`%0Aالهاتف: ${phone}`;
+
+message +=
+
+`%0Aالعنوان: ${address}`;
+
+message +=
+
+`%0Aطريقة الدفع: ${payment}`;
+
+
+
+
+
+if(payment === "فودافون كاش"){
+
+message += "%0Aيرجى إرسال صورة التحويل.";
+
+}
+
+
+
+if(payment === "إنستا باي"){
+
+message += "%0Aيرجى إرسال تأكيد التحويل.";
+
+}
+
+
+
+
+
+let whatsapp = "201159866529";
+
+
+
+window.open(
+
+`https://wa.me/${whatsapp}?text=${message}`,
+
+"_blank"
+
+);
+
+
+
+}
+
+
+
+</script>
+
+
+</body>
+
+</html>
