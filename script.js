@@ -11,9 +11,10 @@ function toggleCart() {
 
 
 
-// إضافة منتج
+// إضافة منتج للسلة
 
 function addToCart(name, price) {
+
 
     let item = cart.find(product => product.name === name);
 
@@ -27,7 +28,9 @@ function addToCart(name, price) {
         cart.push({
 
             name: name,
+
             price: price,
+
             qty: 1
 
         });
@@ -63,7 +66,7 @@ function updateCart() {
 
 
 
-    cart.forEach((item,index)=>{
+    cart.forEach((item, index) => {
 
 
         let itemTotal = item.price * item.qty;
@@ -77,31 +80,41 @@ function updateCart() {
 
         cartItems.innerHTML += `
 
+
         <div class="cart-item">
 
-        <h4>${item.name}</h4>
 
-        <p>
-        ${item.price} جنيه × ${item.qty}
-        </p>
+            <h4>${item.name}</h4>
 
 
-        <button onclick="increaseQty(${index})">
-        +
-        </button>
+            <p>
+            السعر: ${item.price} جنيه
+            </p>
 
 
-        <span>
-        ${item.qty}
-        </span>
+            <div class="quantity">
 
 
-        <button onclick="decreaseQty(${index})">
-        -
-        </button>
+                <button onclick="increaseQty(${index})">
+                +
+                </button>
+
+
+                <span>
+                ${item.qty}
+                </span>
+
+
+                <button onclick="decreaseQty(${index})">
+                -
+                </button>
+
+
+            </div>
 
 
         </div>
+
 
         `;
 
@@ -123,7 +136,7 @@ function updateCart() {
 
 // زيادة الكمية
 
-function increaseQty(index){
+function increaseQty(index) {
 
     cart[index].qty++;
 
@@ -134,23 +147,29 @@ function increaseQty(index){
 
 
 
+
 // تقليل الكمية
 
-function decreaseQty(index){
+function decreaseQty(index) {
 
 
-    if(cart[index].qty > 1){
+    if(cart[index].qty > 1) {
+
 
         cart[index].qty--;
 
-    }else{
+
+    } else {
+
 
         cart.splice(index,1);
+
 
     }
 
 
     updateCart();
+
 
 }
 
@@ -159,25 +178,31 @@ function decreaseQty(index){
 
 
 
-// إرسال الطلب واتساب
+// إرسال الطلب عبر واتساب
 
-document.getElementById("checkoutBtn").addEventListener("click",function(){
+
+document.getElementById("checkoutBtn").addEventListener("click", function(){
 
 
 
     if(cart.length === 0){
 
+
         alert("السلة فارغة");
+
 
         return;
 
+
     }
+
 
 
 
     let payment = document.querySelector(
         'input[name="payment"]:checked'
     ).value;
+
 
 
 
@@ -190,7 +215,8 @@ document.getElementById("checkoutBtn").addEventListener("click",function(){
 
 
 
-    cart.forEach(item=>{
+    cart.forEach(item => {
+
 
 
         let itemTotal = item.price * item.qty;
@@ -199,11 +225,14 @@ document.getElementById("checkoutBtn").addEventListener("click",function(){
         total += itemTotal;
 
 
+
         message += 
         `${item.name} × ${item.qty} = ${itemTotal} جنيه%0A`;
 
 
+
     });
+
 
 
 
@@ -214,6 +243,30 @@ document.getElementById("checkoutBtn").addEventListener("click",function(){
 
     message +=
     `%0Aطريقة الدفع: ${payment}`;
+
+
+
+
+    if(payment === "فودافون كاش"){
+
+
+        message +=
+        "%0Aيرجى إرسال صورة التحويل بعد الدفع.";
+
+
+    }
+
+
+
+    if(payment === "إنستا باي"){
+
+
+        message +=
+        "%0Aيرجى إرسال تأكيد التحويل بعد الدفع.";
+
+
+    }
+
 
 
 
