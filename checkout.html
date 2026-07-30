@@ -25,6 +25,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 </head>
 
 
+
 <body>
 
 
@@ -51,9 +52,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 <section class="checkout">
 
 
+<div class="checkout-box">
+
+
 <h1>
 
-<i class="fa-solid fa-credit-card"></i>
+<i class="fa-solid fa-cart-shopping"></i>
 
 إتمام الطلب
 
@@ -63,13 +67,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 
 
-<div class="checkout-box">
-
-
-
 <h2>
-المنتجات
+ملخص الطلب
 </h2>
+
 
 
 <div id="checkout-items">
@@ -78,19 +79,21 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 
 
-
-
 <h3>
 
 الإجمالي:
 
 <span id="checkout-total">
+
 0
+
 </span>
 
 جنيه
 
 </h3>
+
+
 
 
 
@@ -108,7 +111,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 <input 
 type="text"
 id="customer-name"
-placeholder="الاسم">
+placeholder="الاسم بالكامل">
+
+
 
 
 
@@ -119,11 +124,13 @@ placeholder="رقم الهاتف">
 
 
 
+
+
+
 <textarea 
 id="customer-address"
-placeholder="العنوان">
+placeholder="العنوان بالتفصيل"></textarea>
 
-</textarea>
 
 
 
@@ -133,9 +140,14 @@ placeholder="العنوان">
 
 <h2>
 
+<i class="fa-solid fa-credit-card"></i>
+
 طريقة الدفع
 
 </h2>
+
+
+
 
 
 
@@ -161,6 +173,9 @@ checked>
 
 
 
+
+
+
 <label class="payment-option">
 
 
@@ -176,6 +191,8 @@ value="فودافون كاش">
 
 
 </label>
+
+
 
 
 
@@ -204,8 +221,7 @@ value="إنستا باي">
 
 
 
-<button onclick="sendOrder()"
-class="whatsapp-btn">
+<button onclick="sendOrder()" class="whatsapp-btn">
 
 
 <i class="fab fa-whatsapp"></i>
@@ -217,11 +233,12 @@ class="whatsapp-btn">
 
 
 
-
 </div>
 
 
+
 </section>
+
 
 
 
@@ -246,42 +263,58 @@ let total = 0;
 
 
 
+
+
+
 cart.forEach(item => {
 
 
-let price = item.price * item.qty;
+
+let itemTotal = item.price * item.qty;
 
 
-total += price;
+
+total += itemTotal;
 
 
 
 itemsBox.innerHTML += `
 
+<div class="checkout-item">
+
+<h4>
+${item.name}
+</h4>
+
+
 <p>
 
-${item.name}
-
-×
-
-${item.qty}
-
-=
-
-${price}
-
-جنيه
+الكمية: ${item.qty}
 
 </p>
 
+
+<p>
+
+السعر: ${itemTotal} جنيه
+
+</p>
+
+
+</div>
+
 `;
+
 
 
 });
 
 
 
+
+
 totalBox.innerHTML = total;
+
 
 
 
@@ -304,6 +337,22 @@ let address = document.getElementById("customer-address").value;
 
 
 
+
+if(name === "" || phone === "" || address === ""){
+
+
+alert("من فضلك أكمل بيانات العميل");
+
+
+return;
+
+
+}
+
+
+
+
+
 let payment = document.querySelector(
 'input[name="payment"]:checked'
 ).value;
@@ -311,9 +360,12 @@ let payment = document.querySelector(
 
 
 
-let message =
 
+
+let message = 
 "طلب جديد من سمك وبروتين%0A%0A";
+
+
 
 
 
@@ -325,8 +377,9 @@ message +=
 `${item.name} × ${item.qty} = ${item.price * item.qty} جنيه%0A`;
 
 
-
 });
+
+
 
 
 
@@ -340,13 +393,16 @@ message +=
 
 `%0A%0Aاسم العميل: ${name}`;
 
+
 message +=
 
-`%0Aالهاتف: ${phone}`;
+`%0Aرقم الهاتف: ${phone}`;
+
 
 message +=
 
 `%0Aالعنوان: ${address}`;
+
 
 message +=
 
@@ -358,15 +414,25 @@ message +=
 
 if(payment === "فودافون كاش"){
 
-message += "%0Aيرجى إرسال صورة التحويل.";
+
+message +=
+
+"%0Aيرجى إرسال صورة التحويل بعد الدفع.";
+
 
 }
+
+
 
 
 
 if(payment === "إنستا باي"){
 
-message += "%0Aيرجى إرسال تأكيد التحويل.";
+
+message +=
+
+"%0Aيرجى إرسال تأكيد التحويل بعد الدفع.";
+
 
 }
 
@@ -374,13 +440,16 @@ message += "%0Aيرجى إرسال تأكيد التحويل.";
 
 
 
-let whatsapp = "201159866529";
+
+let whatsappNumber = "201159866529";
+
+
 
 
 
 window.open(
 
-`https://wa.me/${whatsapp}?text=${message}`,
+`https://wa.me/${whatsappNumber}?text=${message}`,
 
 "_blank"
 
@@ -388,11 +457,16 @@ window.open(
 
 
 
+
+localStorage.removeItem("cart");
+
+
 }
 
 
 
 </script>
+
 
 
 </body>
