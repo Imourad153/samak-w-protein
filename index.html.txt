@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>سمك وبروتين</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+
+<i class="fa-solid fa-fish"></i>
+
+<span>سمك وبروتين</span>
+
+</div>
+
+
+<nav>
+
+<a href="#">الرئيسية</a>
+
+<a href="#products">المنتجات</a>
+
+<a href="#about">من نحن</a>
+
+<a href="#contact">تواصل معنا</a>
+
+</nav>
+
+
+<div class="cart-icon" onclick="toggleCart()">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+<span id="cart-count">0</span>
+
+</div>
+
+
+</header>
+
+
+
+<section class="hero">
+
+
+<div class="overlay">
+
+
+<h1>
+من الثلاجة إلى المائدة
+</h1>
+
+
+<p>
+منتجات غذائية طازجة ومجمدة بجودة عالية،
+اختيارات متنوعة بأوزان وأسعار مناسبة.
+</p>
+
+
+<a href="#products" class="btn">
+
+تسوق الآن
+
+</a>
+
+
+</div>
+
+
+</section>
+<section id="products" class="products">
+
+<h2>منتجاتنا</h2>
+
+
+<div class="cards">
+
+
+
+<div class="card">
+
+<img src="salmon.webp" alt="سالمون">
+
+<h3>سالمون</h3>
+
+<p>
+سالمون عالي الجودة مناسب للشوي والطهي.
+</p>
+
+<div class="weight">
+الوزن: 500 جم
+</div>
+
+<div class="price">
+225 جنيه
+</div>
+
+
+<button onclick="addToCart('سالمون 500 جم',225)">
+
+<i class="fa-solid fa-cart-plus"></i>
+
+أضف إلى السلة
+
+</button>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<img src="fish-fillet.webp" alt="سمك فيليه">
+
+<h3>سمك فيليه</h3>
+
+<p>
+فيليه طازج جاهز للتحضير.
+</p>
+
+<div class="weight">
+الوزن: 500 جم
+</div>
+
+<div class="price">
+110 جنيه
+</div>
+
+
+<button onclick="addToCart('سمك فيليه 500 جم',110)">
+
+<i class="fa-solid fa-cart-plus"></i>
+
+أضف إلى السلة
+
+</button>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<img src="shish-tawook.jpg" alt="شيش طاووق">
+
+<h3>شيش طاووق</h3>
+
+<p>
+متبل بأفضل التوابل وجاهز للطهي.
+</p>
+
+<div class="weight">
+الوزن: 500 جم
+</div>
+
+<div class="price">
+105 جنيه
+</div>
+
+
+<button onclick="addToCart('شيش طاووق 500 جم',105)">
+
+<i class="fa-solid fa-cart-plus"></i>
+
+أضف إلى السلة
+
+</button>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<img src="tawook.jpeg" alt="طاووق">
+
+<h3>طاووق</h3>
+
+<p>
+قطع دجاج طازجة وجاهزة للطهي.
+</p>
+
+<div class="weight">
+الوزن: 500 جم
+</div>
+
+<div class="price">
+97.5 جنيه
+</div>
+
+
+<button onclick="addToCart('طاووق 500 جم',97.5)">
+
+<i class="fa-solid fa-cart-plus"></i>
+
+أضف إلى السلة
+
+</button>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<img src="chicken-pane.jpeg" alt="فراخ بانيه">
+
+<h3>فراخ بانيه</h3>
+
+<p>
+صدور فراخ ممتازة بجودة عالية.
+</p>
+
+<div class="weight">
+الوزن: 500 جم
+</div>
+
+<div class="price">
+110 جنيه
+</div>
+
+
+<button onclick="addToCart('فراخ بانيه 500 جم',110)">
+
+<i class="fa-solid fa-cart-plus"></i>
+
+أضف إلى السلة
+
+</button>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<img src="pane.jpeg" alt="بانيه">
+
+<h3>بانيه</h3>
+
+<p>
+بانيه طازج ومجهز بطريقة مميزة.
+</p>
+
+<div class="weight">
+الوزن: 500 جم
+</div>
+
+<div class="price">
+105 جنيه
+</div>
+
+
+<button onclick="addToCart('بانيه 500 جم',105)">
+
+<i class="fa-solid fa-cart-plus"></i>
+
+أضف إلى السلة
+
+</button>
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<img src="shrimp.webp" alt="جمبرى">
+
+<h3>جمبرى</h3>
+
+<p>
+جمبري طازج ومجمد بجودة ممتازة.
+</p>
+
+<div class="weight">
+الوزن: 500 جم
+</div>
+
+<div class="price">
+190 جنيه
+</div>
+
+
+<button onclick="addToCart('جمبرى 500 جم',190)">
+
+<i class="fa-solid fa-cart-plus"></i>
+
+أضف إلى السلة
+
+</button>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+<!-- Shopping Cart -->
+
+<div id="cart" class="cart">
+
+
+<div class="cart-header">
+
+<h2>
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+سلة المشتريات
+
+</h2>
+
+
+<span class="close-cart" onclick="toggleCart()">
+
+&times;
+
+</span>
+
+
+</div>
+
+
+
+<div id="cart-items" class="cart-items">
+
+<!-- المنتجات تضاف هنا بواسطة JavaScript -->
+
+</div>
+
+
+
+
+<div class="cart-footer">
+
+
+<h3>
+
+الإجمالي :
+<span id="total-price">0</span>
+جنيه
+
+</h3>
+
+
+
+<button id="checkoutBtn" class="whatsapp-btn">
+
+
+<i class="fab fa-whatsapp"></i>
+
+إرسال الطلب عبر واتساب
+
+
+</button>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<!-- About -->
+
+
+<section id="about" class="about">
+
+
+<h2>
+لماذا نحن؟
+</h2>
+
+
+
+<div class="features">
+
+
+
+<div class="feature">
+
+<i class="fa-solid fa-snowflake"></i>
+
+<h3>
+حفظ بالتجميد
+</h3>
+
+
+<p>
+نحافظ على جودة المنتجات من الثلاجة إلى المائدة.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="feature">
+
+
+<i class="fa-solid fa-award"></i>
+
+
+<h3>
+أفضل جودة
+</h3>
+
+
+<p>
+نختار أجود المنتجات بعناية لضمان رضا العملاء.
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="feature">
+
+
+<i class="fa-solid fa-truck-fast"></i>
+
+
+<h3>
+توصيل سريع
+</h3>
+
+
+<p>
+خدمة توصيل سريعة وآمنة حتى باب المنزل.
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- Contact -->
+
+
+<footer id="contact">
+
+
+
+<h2>
+سمك وبروتين
+</h2>
+
+
+
+<p>
+منتجات غذائية طازجة ومجمدة بأعلى جودة.
+</p>
+
+
+
+
+<div class="social">
+
+
+<a href="https://wa.me/201159866529" target="_blank">
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
+
+
+
+
+<a href="#">
+
+<i class="fab fa-facebook"></i>
+
+</a>
+
+
+
+<a href="#">
+
+<i class="fab fa-instagram"></i>
+
+</a>
+
+
+
+</div>
+
+
+
+
+<p class="copyright">
+
+© 2026 جميع الحقوق محفوظة | سمك وبروتين
+
+</p>
+
+
+
+</footer>
+
+
+
+
+
+
+<!-- Floating WhatsApp -->
+
+
+<a href="https://wa.me/201159866529"
+target="_blank"
+class="floating-whatsapp">
+
+
+<i class="fab fa-whatsapp"></i>
+
+
+</a>
+
+
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>
