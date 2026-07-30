@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سمك وبروتين</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <i class="fa-solid fa-fish"></i>
+        <span>سمك وبروتين</span>
+    </div>
+
+    <nav>
+        <a href="#">الرئيسية</a>
+        <a href="#products">المنتجات</a>
+        <a href="#about">من نحن</a>
+        <a href="#contact">تواصل معنا</a>
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <div class="overlay">
+
+        <h1>من الثلاجة إلى المائدة</h1>
+
+        <p>
+            منتجات غذائية طازجة وفرش ومجمدة بأعلى جودة،
+            بأوزان مختلفة، والأسعار حسب الوزن.
+        </p>
+
+        <a href="#products" class="btn">
+            تصفح المنتجات
+        </a>
+
+    </div>
+
+</section>
+
+<section class="products" id="products">
+
+    <h2>منتجاتنا</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="salmon.webp" alt="سالمون">
+            <h3>سالمون</h3>
+            <p>سالمون عالي الجودة مناسب للشوي والطهي.</p>
+            <span>السعر حسب الوزن</span>
+            <a href="#" class="order">اطلب الآن</a>
+        </div>
+
+        <div class="card">
+            <img src="fish-fillet.webp" alt="سمك فيليه">
+            <h3>سمك فيليه</h3>
+            <p>فيليه طازج جاهز للتحضير.</p>
+            <span>السعر حسب الوزن</span>
+            <a href="#" class="order">اطلب الآن</a>
+        </div>
+
+        <div class="card">
+            <img src="shish-tawook.jpg" alt="شيش طاووق">
+            <h3>شيش طاووق</h3>
+            <p>متبل بأفضل التوابل.</p>
+            <span>السعر حسب الوزن</span>
+            <a href="#" class="order">اطلب الآن</a>
+        </div>
+
+        <div class="card">
+            <img src="tawook.jpeg" alt="طاووق">
+            <h3>طاووق</h3>
+            <p>طازج وجاهز للطهي.</p>
+            <span>السعر حسب الوزن</span>
+            <a href="#" class="order">اطلب الآن</a>
+        </div>
+
+        <div class="card">
+            <img src="chicken-pane.jpeg" alt="فراخ بانيه">
+            <h3>فراخ بانيه</h3>
+            <p>صدور فراخ ممتازة.</p>
+            <span>السعر حسب الوزن</span>
+            <a href="#" class="order">اطلب الآن</a>
+        </div>
+
+        <div class="card">
+            <img src="pane.jpeg" alt="بانيه">
+            <h3>بانيه</h3>
+            <p>بانيه طازج بجودة عالية.</p>
+            <span>السعر حسب الوزن</span>
+            <a href="#" class="order">اطلب الآن</a>
+        </div>
+
+        <div class="card">
+            <img src="shrimp.webp" alt="جمبرى">
+            <h3>جمبرى</h3>
+            <p>جمبري طازج ومجمد.</p>
+            <span>السعر حسب الوزن</span>
+            <a href="#" class="order">اطلب الآن</a>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="about" class="about">
+
+    <h2>لماذا نحن؟</h2>
+
+    <div class="features">
+
+        <div>
+            <i class="fa-solid fa-snowflake"></i>
+            <h3>حفظ بالتجميد</h3>
+            <p>من الثلاجة إلى المائدة.</p>
+        </div>
+
+        <div>
+            <i class="fa-solid fa-award"></i>
+            <h3>جودة ممتازة</h3>
+            <p>أفضل خامات غذائية.</p>
+        </div>
+
+        <div>
+            <i class="fa-solid fa-truck"></i>
+            <h3>سرعة التوصيل</h3>
+            <p>توصيل سريع وآمن.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<footer id="contact">
+
+    <h3>سمك وبروتين</h3>
+
+    <p>منتجات غذائية طازجة ومجمدة</p>
+
+    <div class="social">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <p>© 2026 جميع الحقوق محفوظة</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
